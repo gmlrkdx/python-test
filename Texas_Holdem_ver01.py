@@ -1,6 +1,6 @@
 import random as r
 import numpy as np
-from collections import Counter
+from collections import Counter #리스트에서 겹치는 값 딕셔너리 형태로 추출 {겹치는 원소 : 겹치는 횟수, ...} 꼴, 정렬은 안됨
 
 players = 2
 #= int(input("게임을 할 플레이어 수를 입력하세요:\n"))
@@ -36,7 +36,7 @@ Field_cards = np.vstack((Suit, Rank)) #플레이어 인식 카드 2차원화
 # 공 공 공 공 공 A A B B : 숫자 rank
 
 #카드 시각화
- 
+
 #홀카드
 print("플레이어 1의 홀카드:", end=" ")
 for i in range(5,7):
@@ -85,7 +85,7 @@ def get_player_card(players_num): #판정 함수에 사용되는 카드 플레�
 
 def is_Straight(players_num): #스트레이트 판정 함수
 
-    _, raw_Player_cards_rank = get_player_card(players_num)
+    _, raw_Player_cards_rank = get_player_card(players_num) #함수 반환값 n개인 상황에서 원하지 않는 반환값은 제외하는 경우 _를 사용한다
 
     raw_Player_cards_rank = sorted(set(raw_Player_cards_rank)) #중복 제거 및 내림차순
 
@@ -134,7 +134,7 @@ def final_value(players_num):
         Player_values = 9
 
     else:
-        Player_values = 10
+        Player_values = 10 #하이카드
 
     return Player_values
 
@@ -152,3 +152,11 @@ elif Player1_values > Player2_values:
 
 else:
     print("동점 ㅋㅋ")
+
+
+#추가로 구현해야 할 것
+#1. 하이카드 판정 > 하이카드나 같은 플러쉬일 경우 판정해야함 판정 함수 내에서 오름차순후 값반환 + 문양별 값 반환 추가
+#2. 베팅 기능 추가
+#3. n명 플레이어 추가
+#4. 게임화? 이건 나중에 하자요
+
